@@ -2,7 +2,7 @@ FROM ubuntu
 
 #cmtk
 RUN apt-get -qq -y update \ 
-&& apt-get -qq -y install cmtk python python-pip python-dev build-essential git nano autoconf nasm \
+&& apt-get -qq -y install cmtk python python-pip python-dev build-essential git nano autoconf nasm automake autoconf m4 libtool bison cmake flex \
 && pip install --upgrade virtualenv \
 && pip install --upgrade pip
 
