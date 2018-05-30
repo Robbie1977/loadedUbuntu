@@ -4,7 +4,7 @@ FROM ubuntu
 RUN apt-get -y update \ 
 && apt-get -y install cmtk python python-pip python-dev build-essential git nano autoconf \
 && pip install --upgrade virtualenv \
-&& pip install --upgrade pip \
+&& pip install --upgrade pip
 
 #python nrrd support
 RUN pip install pynrrd
