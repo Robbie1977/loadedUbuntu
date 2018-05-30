@@ -1,8 +1,8 @@
 FROM ubuntu
 
 #cmtk
-RUN apt-get -y update \ 
-&& apt-get -y install cmtk python python-pip python-dev build-essential git nano autoconf \
+RUN apt-get -qq -y update \ 
+&& apt-get -qq -y install cmtk python python-pip python-dev build-essential git nano autoconf \
 && pip install --upgrade virtualenv \
 && pip install --upgrade pip
 
