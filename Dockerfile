@@ -9,6 +9,10 @@ RUN apt-get -qq -y update \
 #python nrrd support
 RUN pip install pynrrd
 
+#python requests support
+RUN pip install pipenv \
+&& pipenv install requests
+
 #woolz
 RUN apt-get -y install build-essential gcc make wget libdirectfb-dev libjpeg-dev zlib1g-dev libsdl-gfx1.2-dev gcc libsdl1.2-dev libasound2-dev  pkg-config libpci-dev dh-autoreconf csh
 
