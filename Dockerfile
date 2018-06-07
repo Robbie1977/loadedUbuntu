@@ -2,7 +2,7 @@ FROM ubuntu
 
 #cmtk
 RUN apt-get -qq -y update \ 
-&& apt-get -qq -y install cmtk python python-pip python-dev build-essential git nano autoconf nasm automake autoconf m4 libtool bison cmake flex \
+&& apt-get -qq -y install cmtk python python-pip python-dev ipython build-essential git nano autoconf nasm automake autoconf m4 libtool bison cmake flex \
 && pip install --upgrade virtualenv \
 && pip install --upgrade pip
 
@@ -104,7 +104,8 @@ RUN cd /opt/ \
 && git clone https://github.com/Robbie1977/lsm2nrrd.git
 RUN cd /opt/ \
 && git clone https://github.com/Robbie1977/nrrd2raw.git
-
+RUN cd /opt/ \
+&& git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git
 
 RUN mkdir -p /data/ && cd /data/ \
 && git clone https://github.com/VirtualFlyBrain/DrosAdultVNSdomains.git
