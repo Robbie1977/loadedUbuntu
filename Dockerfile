@@ -2,7 +2,7 @@ FROM ubuntu
 
 #cmtk
 RUN apt-get -qq -y update \ 
-&& apt-get -qq -y install cmtk python python-pip python-dev ipython build-essential git nano autoconf nasm automake autoconf m4 libtool bison cmake flex \
+&& apt-get -qq -y install locales cmtk python python-pip python-dev ipython build-essential git nano autoconf nasm automake autoconf m4 libtool bison cmake flex \
 && pip install --upgrade virtualenv \
 && pip install --upgrade pip
 
@@ -10,8 +10,7 @@ RUN apt-get -qq -y update \
 RUN pip install pynrrd
 
 #python requests support
-RUN pip install pipenv \
-&& pipenv install requests
+RUN pip install requests
 
 #woolz
 RUN apt-get -y install build-essential gcc make wget libdirectfb-dev libjpeg-dev zlib1g-dev libsdl-gfx1.2-dev gcc libsdl1.2-dev libasound2-dev  pkg-config libpci-dev dh-autoreconf csh
