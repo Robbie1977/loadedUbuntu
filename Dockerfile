@@ -111,6 +111,13 @@ RUN cd /opt/ \
 RUN cd /opt/ \
 && git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git
 
+RUN cd /opt/ \
+&& wget https://downloads.imagej.net/fiji/latest/fiji-linux64.zip \
+&& unzip fiji-linux64.zip \
+&& rm fiji-linux64.zip
+
+ENV FIJI=/opt/Fiji.app/ImageJ-linux64
+
 RUN mkdir -p /data/ && cd /data/ \
 && git clone https://github.com/VirtualFlyBrain/DrosAdultVNSdomains.git
 
