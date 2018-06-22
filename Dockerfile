@@ -6,8 +6,9 @@ RUN apt-get -qq -y update \
 && pip install --upgrade virtualenv \
 && pip install --upgrade pip
 
-#python nrrd support
+#python image support
 RUN pip install pynrrd
+RUN pip install h5py
 
 #python neo4j support
 RUN pip install requests
