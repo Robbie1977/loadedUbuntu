@@ -111,7 +111,10 @@ RUN cd /opt/ \
 && git clone https://github.com/Robbie1977/nrrd2raw.git
 RUN cd /opt/ \
 && git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git
-
+RUN cd /opt/ \
+&& git clone https://github.com/VirtualFlyBrain/StackProcessing.git
+RUN cd /opt/ \
+&& git clone https://github.com/VirtualFlyBrain/StackLoader.git
 RUN cd /opt/ \
 && wget https://downloads.imagej.net/fiji/latest/fiji-linux64.zip \
 && unzip fiji-linux64.zip \
@@ -128,11 +131,10 @@ RUN cd /data/ \
 RUN cd /data/ \
 && git clone https://github.com/VirtualFlyBrain/DrosAdultHalfBRAINdomains.git
 
-RUN cd /data/ \
-&& git clone https://github.com/VirtualFlyBrain/StackLoader.git
+
 
 RUN mkdir -p /disk/data/VFB/IMAGE_DATA/
-RUN ln -s /data/StackLoader /disk/data/VFB/IMAGE_DATA/
+RUN ln -s /opt/StackLoader /disk/data/VFB/IMAGE_DATA/
 RUN mkdir /partition/bocian/VFBTools
 RUN ln -s /opt/* /partition/bocian/VFBTools/
 RUN ln -s /VFB /disk/data/VFB/IMAGE_DATA/
@@ -142,7 +144,8 @@ RUN mv /disk/data/VFBTools/Fiji.app /disk/data/VFBTools/Fiji
 RUN ln -s /opt/* /disk/data/VFBTools/
 RUN ln -s /disk/data/VFBTools/MouseAtlas /disk/data/VFBTools/Woolz2013Full
 RUN mkdir -p /partition/karenin/VFB/IMAGE_DATA/
-RUN ln -s /data/StackLoader /partition/karenin/VFB/IMAGE_DATA/
+RUN ln -s /opt/StackLoader /partition/karenin/VFB/IMAGE_DATA/
 RUN ln -s /VFB /partition/karenin/VFB/IMAGE_DATA/
 RUN mkdir -p /partition/bocian/VFBTools/python-modules-2.6/bin/
 RUN echo "#empty" > /partition/bocian/VFBTools/python-modules-2.6/bin/activate
+RUN ln -s /opt/StackProcessing /disk/data/VFB/IMAGE_DATA/
