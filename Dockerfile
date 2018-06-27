@@ -139,3 +139,5 @@ RUN ln -s /VFB /disk/data/VFB/IMAGE_DATA/
 RUN mkdir -p /disk/data/VFBTools
 RUN ln -s /opt/Fiji.app /disk/data/VFBTools/
 RUN mv /disk/data/VFBTools/Fiji.app /disk/data/VFBTools/Fiji
+RUN ln -s /opt/* /disk/data/VFBTools/
+RUN ln -s /disk/data/VFBTools/MouseAtlas /disk/data/VFBTools/Woolz2013Full
