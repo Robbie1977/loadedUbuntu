@@ -128,3 +128,14 @@ RUN cd /data/ \
 RUN cd /data/ \
 && git clone https://github.com/VirtualFlyBrain/DrosAdultHalfBRAINdomains.git
 
+RUN cd /data/ \
+&& git clone https://github.com/VirtualFlyBrain/StackLoader.git
+
+RUN mkdir -p /disk/data/VFB/IMAGE_DATA/
+RUN ln -s /data/StackLoader /disk/data/VFB/IMAGE_DATA/
+RUN mkdir /partition/bocian/VFBTools
+RUN ln -s /opt/* /partition/bocian/VFBTools/
+RUN ln -s /VFB /disk/data/VFB/IMAGE_DATA/
+RUN mkdir -p /disk/data/VFBTools
+RUN ln -s /opt/Fiji.app /disk/data/VFBTools/
+RUN mv /disk/data/VFBTools/Fiji.app /disk/data/VFBTools/Fiji
