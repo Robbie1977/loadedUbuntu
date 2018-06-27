@@ -141,3 +141,8 @@ RUN ln -s /opt/Fiji.app /disk/data/VFBTools/
 RUN mv /disk/data/VFBTools/Fiji.app /disk/data/VFBTools/Fiji
 RUN ln -s /opt/* /disk/data/VFBTools/
 RUN ln -s /disk/data/VFBTools/MouseAtlas /disk/data/VFBTools/Woolz2013Full
+RUN mkdir -p /partition/karenin/VFB/IMAGE_DATA/
+RUN ln -s /data/StackLoader /partition/karenin/VFB/IMAGE_DATA/
+RUN ln -s /VFB /partition/karenin/VFB/IMAGE_DATA/
+RUN mkdir -p /partition/bocian/VFBTools/python-modules-2.6/bin/
+RUN echo "#empty" > /partition/bocian/VFBTools/python-modules-2.6/bin/activate
