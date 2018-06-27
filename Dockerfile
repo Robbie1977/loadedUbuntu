@@ -135,7 +135,7 @@ RUN cd /data/ \
 
 RUN mkdir -p /disk/data/VFB/IMAGE_DATA/
 RUN ln -s /opt/StackLoader /disk/data/VFB/IMAGE_DATA/
-RUN mkdir /partition/bocian/VFBTools
+RUN mkdir -p /partition/bocian/VFBTools
 RUN ln -s /opt/* /partition/bocian/VFBTools/
 RUN ln -s /VFB /disk/data/VFB/IMAGE_DATA/
 RUN mkdir -p /disk/data/VFBTools
