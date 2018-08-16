@@ -164,6 +164,7 @@ apt-get -y tzdata
 RUN cd /tmp/ && /
 wget https://repo.anaconda.com/archive/${ANACONDAINS} && /
 bash ${ANACONDAINS}
+COPY startup.sh /
+RUN chmod +x /startup.sh
 
-
-
+ENTRYPOINT /startup.sh
