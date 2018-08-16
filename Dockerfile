@@ -160,3 +160,5 @@ echo -e "tzdata tzdata/Areas select ${TZAREA}\ntzdata tzdata/Zones/${TZAREA} sel
 debconf-set-selections /tmp/preseed.txt && /
 apt-get -y install python3-notebook jupyter-core python-ipykernel
 RUN pip install --upgrade pip
+RUN pip install jupyter
+
