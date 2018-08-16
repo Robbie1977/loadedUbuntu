@@ -163,7 +163,7 @@ debconf-set-selections /tmp/preseed.txt && /
 apt-get -y tzdata
 RUN cd /tmp/ && /
 wget https://repo.anaconda.com/archive/${ANACONDAINS} && /
-bash ${ANACONDAINS}
+bash ${ANACONDAINS} -b 
 COPY startup.sh /
 RUN chmod +x /startup.sh
 
