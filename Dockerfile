@@ -157,8 +157,8 @@ ENV JUPYPASS=password
 
 #ipython jupyter notebook
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
-echo "${TZAREA}/${TZCITY}" > /etc/timezone && \
-echo -e "tzdata tzdata/Areas select ${TZAREA}\ntzdata tzdata/Zones/${TZAREA} select ${TZCITY}" > /tmp/preseed.txt && \
+/bin/echo "${TZAREA}/${TZCITY}" > /etc/timezone && \
+/bin/echo -e "tzdata tzdata/Areas select ${TZAREA}\ntzdata tzdata/Zones/${TZAREA} select ${TZCITY}" > /tmp/preseed.txt && \
 debconf-set-selections /tmp/preseed.txt && \
 apt-get -y tzdata
 RUN cd /tmp/ && \
