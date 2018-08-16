@@ -156,11 +156,6 @@ ENV ANACONDAINS=Anaconda3-5.2.0-Linux-x86_64.sh
 ENV JUPYPASS=password
 
 #ipython jupyter notebook
-RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && \
-/bin/echo "${TZAREA}/${TZCITY}" > /etc/timezone && \
-/bin/echo -e "tzdata tzdata/Areas select ${TZAREA}\ntzdata tzdata/Zones/${TZAREA} select ${TZCITY}" > /tmp/preseed.txt && \
-debconf-set-selections /tmp/preseed.txt && \
-apt-get -y tzdata
 RUN cd /tmp/ && \
 wget https://repo.anaconda.com/archive/${ANACONDAINS} && \
 bash ${ANACONDAINS} -b 
