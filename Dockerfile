@@ -149,3 +149,8 @@ RUN ln -s /VFB /partition/karenin/VFB/IMAGE_DATA/
 RUN mkdir -p /partition/bocian/VFBTools/python-modules-2.6/bin/
 RUN echo "#empty" > /partition/bocian/VFBTools/python-modules-2.6/bin/activate
 RUN ln -s /opt/StackProcessing /disk/data/VFB/IMAGE_DATA/
+
+#ipython jupyter notebook
+RUN apt-get -y install ipython ipython-notebook
+RUN pip install --upgrade pip
+RUN pip install jupyter
