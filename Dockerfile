@@ -152,12 +152,18 @@ RUN ln -s /opt/StackProcessing /disk/data/VFB/IMAGE_DATA/
 
 ENV TZAREA=Europe
 ENV TZCITY=London
+ENV ANACONDAINS=Anaconda3-5.2.0-Linux-x86_64.sh
+ENV JUPYPASS=password
 
 #ipython jupyter notebook
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && /
 echo "${TZAREA}/${TZCITY}" > /etc/timezone && /
 echo -e "tzdata tzdata/Areas select ${TZAREA}\ntzdata tzdata/Zones/${TZAREA} select ${TZCITY}" > /tmp/preseed.txt && /
 debconf-set-selections /tmp/preseed.txt && /
-apt-get -y install python3-notebook jupyter-core python-ipykernel
+apt-get -y tzdata
+RUN cd /tmp/ && /
+wget https://repo.anaconda.com/archive/${ANACONDAINS} && /
+bash ${ANACONDAINS}
+
 
 
