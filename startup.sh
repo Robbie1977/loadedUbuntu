@@ -1,4 +1,3 @@
 #!/bin/bash
 
-jupyter notebook ${JUPYPASS}
-jupyter lab --port 9999 --no-browser
+jupyter notebook --ip='*' --NotebookApp.password="${JUPYPASS}" --no-browser --port 9999 --allow-root
