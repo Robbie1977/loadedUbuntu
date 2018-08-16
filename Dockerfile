@@ -151,6 +151,6 @@ RUN echo "#empty" > /partition/bocian/VFBTools/python-modules-2.6/bin/activate
 RUN ln -s /opt/StackProcessing /disk/data/VFB/IMAGE_DATA/
 
 #ipython jupyter notebook
-RUN apt-get -y install ipython ipython-notebook
+RUN apt-get -y install python3-notebook jupyter-core python-ipykernel
 RUN pip install --upgrade pip
 RUN pip install jupyter
