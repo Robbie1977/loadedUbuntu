@@ -165,6 +165,7 @@ RUN chmod +x /startup.sh
 #neo4j requirements
 RUN python3 -m pip install requests
 RUN python3 -m pip install psycopg2
-RUN apt-get -y install ipython3
+RUN apt-get -y install ipython3 python3-pip
+RUN /root/.local/bin/pip3 install pynrrd
 
 ENTRYPOINT /startup.sh
