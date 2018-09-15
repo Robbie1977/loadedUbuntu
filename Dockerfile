@@ -168,4 +168,4 @@ RUN pip3 install pynrrd
 RUN pip3 install requests
 RUN pip3 install psycopg2
 
-#ENTRYPOINT /startup.sh
+ENTRYPOINT /startup.sh
