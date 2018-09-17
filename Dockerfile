@@ -174,4 +174,4 @@ RUN pip3 install psycopg2
 
 ENTRYPOINT /startup.sh
 
-EXPOSE 9999
+EXPOSE 80
