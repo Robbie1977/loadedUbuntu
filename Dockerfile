@@ -170,7 +170,7 @@ RUN chmod +x /startup.sh
 RUN apt-get -y install ipython3 python3-pip python3-setuptools
 RUN pip3 install pynrrd
 RUN pip3 install requests
-RUN pip3 install psycopg2
+RUN pip3 install psycopg2-binary
 RUN pip3 install pandas
 
 ENTRYPOINT /startup.sh
