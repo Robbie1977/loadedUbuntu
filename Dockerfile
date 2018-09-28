@@ -163,8 +163,7 @@ ENV JUPYPASS=password
 RUN cd /tmp/ && \
 wget https://repo.anaconda.com/archive/${ANACONDAINS} && \
 bash ${ANACONDAINS} -b 
-COPY startup.sh /
-RUN chmod +x /startup.sh
+COPY startup.sh /scripts/
 
 #neo4j requirements
 RUN apt-get -y install ipython3 python3-pip python3-setuptools
@@ -173,6 +172,8 @@ RUN pip3 install requests
 RUN pip3 install psycopg2-binary
 RUN pip3 install pandas
 
-ENTRYPOINT /startup.sh
+RUN chmod +x /scripts/*.sh
+
+ENTRYPOINT /scripts/startup.sh
 
 EXPOSE 80
