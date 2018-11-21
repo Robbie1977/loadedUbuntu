@@ -114,7 +114,7 @@ RUN cd /opt/ \
 RUN cd /opt/ \
 && git clone https://github.com/Robbie1977/nrrd2raw.git
 RUN cd /opt/ \
-&& git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git
+&& git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git --branch pub_pipeline_fixes
 RUN cd /opt/ \
 && git clone https://github.com/VirtualFlyBrain/StackProcessing.git
 RUN cd /opt/ \
