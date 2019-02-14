@@ -17,6 +17,7 @@ RUN pip install h5py
 #python neo4j support
 RUN pip install requests
 RUN pip install psycopg2
+RUN pip install neo4j
 
 #woolz
 RUN apt-get -y install build-essential gcc make wget libdirectfb-dev libjpeg-dev zlib1g-dev libsdl-gfx1.2-dev gcc libsdl1.2-dev libasound2-dev  pkg-config libpci-dev dh-autoreconf csh
