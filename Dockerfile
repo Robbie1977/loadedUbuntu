@@ -6,7 +6,7 @@ VOLUME template
 
 #cmtk
 RUN apt-get -qq -y update \ 
-&& apt-get -qq -y install locales cmtk python python-pip python-dev ipython build-essential git nano autoconf nasm zip automake autoconf m4 libtool bison cmake flex xvfb imagej bc sec \
+&& apt-get -qq -y install locales cmtk python python-pip python-dev ipython build-essential git nano autoconf nasm zip automake autoconf m4 libtool bison cmake flex xvfb imagej bc sec libpq-dev\
 && pip install --upgrade virtualenv \
 && pip install --upgrade pip
 
@@ -166,7 +166,7 @@ wget https://repo.anaconda.com/archive/${ANACONDAINS} && \
 bash ${ANACONDAINS} -b 
 
 #neo4j requirements
-RUN apt-get -y install ipython3 python3-pip python3-setuptools libpq-dev
+RUN apt-get -y install ipython3 python3-pip python3-setuptools
 RUN pip3 install pynrrd
 RUN pip3 install requests
 RUN pip3 install psycopg2-binary
