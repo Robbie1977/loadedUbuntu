@@ -166,7 +166,7 @@ wget https://repo.anaconda.com/archive/${ANACONDAINS} && \
 bash ${ANACONDAINS} -b 
 
 #neo4j requirements
-RUN apt-get -y install ipython3 python3-pip python3-setuptools
+RUN apt-get -y install ipython3 python3-pip python3-setuptools libpq-dev
 RUN pip3 install pynrrd
 RUN pip3 install requests
 RUN pip3 install psycopg2-binary
