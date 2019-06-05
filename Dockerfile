@@ -1,5 +1,7 @@
 FROM ubuntu
 
+ENV JUPITER_PASSWORD="sha1:7f8e745dd219:b14fb15e0b4bc290a5d109ae97cba5c361b5d139"
+
 VOLUME input
 VOLUME output
 VOLUME template
