@@ -155,25 +155,25 @@ RUN mkdir -p /partition/bocian/VFBTools/python-modules-2.6/bin/
 RUN echo "#empty" > /partition/bocian/VFBTools/python-modules-2.6/bin/activate
 RUN ln -s /opt/StackProcessing /disk/data/VFB/IMAGE_DATA/
 
-ENV TZAREA=Europe
-ENV TZCITY=London
-ENV ANACONDAINS=Anaconda3-5.2.0-Linux-x86_64.sh
-ENV JUPYPASS="sha1:7f8e745dd219:b14fb15e0b4bc290a5d109ae97cba5c361b5d139"
+# ENV TZAREA=Europe
+# ENV TZCITY=London
+# ENV ANACONDAINS=Anaconda3-5.2.0-Linux-x86_64.sh
+# ENV JUPYPASS="sha1:7f8e745dd219:b14fb15e0b4bc290a5d109ae97cba5c361b5d139"
 
-#ipython jupyter notebook
-RUN cd /tmp/ && \
-wget https://repo.anaconda.com/archive/${ANACONDAINS} && \
-bash ${ANACONDAINS} -b 
+# #ipython jupyter notebook
+# RUN cd /tmp/ && \
+# wget https://repo.anaconda.com/archive/${ANACONDAINS} && \
+# bash ${ANACONDAINS} -b 
 
-#neo4j requirements
-RUN apt-get -y install ipython3 python3-pip python3-setuptools
-RUN pip3 install pynrrd
-RUN pip3 install requests
-RUN pip3 install psycopg2-binary
-RUN pip3 install pandas
+# #neo4j requirements
+# RUN apt-get -y install ipython3 python3-pip python3-setuptools
+# RUN pip3 install pynrrd
+# RUN pip3 install requests
+# RUN pip3 install psycopg2-binary
+# RUN pip3 install pandas
 
-#python3.7 install
-RUN apt-get -y update && apt-get -y install python3.7
+# #python3.7 install
+# RUN apt-get -y update && apt-get -y install python3.7
 
 COPY /scripts/* /scripts/
 RUN chmod +x /scripts/*.sh
