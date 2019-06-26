@@ -6,7 +6,7 @@ VOLUME template
 
 #cmtk
 RUN apt-get -qq -y update \ 
-&& apt-get -qq -y install locales cmtk python python-pip python-dev ipython build-essential git nano autoconf nasm zip automake autoconf m4 libtool bison cmake flex xvfb imagej bc sec libpq-dev\
+&& apt-get -qq -y install locales cmtk python python-pip python-dev ipython build-essential git nano autoconf nasm zip automake autoconf m4 libtool bison cmake flex xvfb imagej bc sec libpq-dev python3.7\
 && pip install --upgrade virtualenv \
 && pip install --upgrade pip
 
@@ -171,9 +171,6 @@ RUN pip3 install pynrrd
 RUN pip3 install requests
 RUN pip3 install psycopg2-binary
 RUN pip3 install pandas
-
-#python3.7 install
-RUN apt-get -y update && apt-get -y install python3.7
 
 COPY /scripts/* /scripts/
 RUN chmod +x /scripts/*.sh
