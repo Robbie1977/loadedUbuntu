@@ -172,6 +172,11 @@ RUN pip3 install requests
 RUN pip3 install psycopg2-binary
 RUN pip3 install pandas
 
+RUN python3.7 -m pip install --force-reinstall pip && \
+pip install psycopg2-binary && \
+pip install requests && \
+pip install pandas 
+
 COPY /scripts/* /scripts/
 RUN chmod +x /scripts/*.sh
 
