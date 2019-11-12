@@ -4,6 +4,20 @@ VOLUME input
 VOLUME output
 VOLUME template
 
+RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
+    && curl -sSL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh \
+    && bash /tmp/miniconda.sh -bfp /usr/local \
+    && rm -rf /tmp/miniconda.sh \
+    && conda install -y python=3 \
+    && conda update conda \
+    && apt-get -qq -y remove curl bzip2 \
+    && apt-get -qq -y autoremove \
+    && apt-get autoclean \
+    && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log \
+    && conda clean --all --yes
+
+ENV PATH /opt/conda/bin:$PATH
+
 #cmtk
 RUN apt-get -qq -y update \ 
 && apt-get -qq -y install locales cmtk python python-pip python-dev ipython build-essential git nano autoconf nasm zip automake autoconf m4 libtool bison cmake flex xvfb imagej bc sec libpq-dev python3.7\
@@ -23,7 +37,7 @@ RUN pip install neo4j
 RUN apt-get -y install build-essential gcc make wget libdirectfb-dev libjpeg-dev zlib1g-dev libsdl-gfx1.2-dev gcc libsdl1.2-dev libasound2-dev  pkg-config libpci-dev dh-autoreconf csh
 
 ENV MA=/opt/MouseAtlas
-RUN export PATH=/root/anaconda3/bin:/opt/VFB_neo4j/src:/opt/MouseAtlas/bin:$PATH
+RUN export PATH=/opt/VFB_neo4j/src:/opt/MouseAtlas/bin:$PATH
 ENV LD_LIBRARY_PATH=/opt/MouseAtlas/lib:$LD_LIBRARY_PATH
 ENV LD_RUN_PATH=/opt/MouseAtlas/lib:$LD_RUN_PATH
 
@@ -168,11 +182,11 @@ bash ${ANACONDAINS} -b
 RUN conda install python=3.7 anaconda=custom
 
 #neo4j requirements
-RUN /root/anaconda3/bin/pip install pynrrd
-RUN /root/anaconda3/bin/pip install requests
-RUN /root/anaconda3/bin/pip install psycopg2
-RUN /root/anaconda3/bin/pip install pandas
-RUN /root/anaconda3/bin/pip install catpy
+RUN /opt/conda/bin/pip install pynrrd
+RUN /opt/conda/bin/pip install requests
+RUN /opt/conda/bin/pip install psycopg2
+RUN /opt/conda/bin/pip install pandas
+RUN /opt/conda/bin/pip install catpy
 
 COPY /scripts/* /scripts/
 RUN chmod +x /scripts/*.sh
