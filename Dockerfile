@@ -165,6 +165,7 @@ RUN cd /tmp/ && \
 wget https://repo.anaconda.com/archive/${ANACONDAINS} && \
 bash ${ANACONDAINS} -b 
 
+RUN conda install python=3.7 anaconda=custom
 
 #neo4j requirements
 RUN conda install --yes pynrrd
