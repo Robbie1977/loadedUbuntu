@@ -168,7 +168,7 @@ bash ${ANACONDAINS} -b
 RUN conda install python=3.7 anaconda=custom
 
 #neo4j requirements
-RUN conda install --yes pynrrd
+RUN /root/anaconda3/bin/pip install pynrrd
 RUN conda install --yes requests
 RUN conda install --yes psycopg2
 RUN conda install --yes pandas
