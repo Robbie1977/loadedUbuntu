@@ -169,10 +169,10 @@ RUN conda install python=3.7 anaconda=custom
 
 #neo4j requirements
 RUN /root/anaconda3/bin/pip install pynrrd
-RUN conda install --yes requests
-RUN conda install --yes psycopg2
-RUN conda install --yes pandas
-RUN conda install --yes catpy
+RUN /root/anaconda3/bin/pip install requests
+RUN /root/anaconda3/bin/pip install psycopg2
+RUN /root/anaconda3/bin/pip install pandas
+RUN /root/anaconda3/bin/pip install catpy
 
 COPY /scripts/* /scripts/
 RUN chmod +x /scripts/*.sh
