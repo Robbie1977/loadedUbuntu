@@ -23,7 +23,7 @@ RUN pip install neo4j
 RUN apt-get -y install build-essential gcc make wget libdirectfb-dev libjpeg-dev zlib1g-dev libsdl-gfx1.2-dev gcc libsdl1.2-dev libasound2-dev  pkg-config libpci-dev dh-autoreconf csh
 
 ENV MA=/opt/MouseAtlas
-ENV PATH=/opt/VFB_neo4j/src/:/opt/MouseAtlas/bin:$PATH
+ENV PATH=/root/anaconda3/bin/:/opt/VFB_neo4j/src/:/opt/MouseAtlas/bin:$PATH
 ENV LD_LIBRARY_PATH=/opt/MouseAtlas/lib:$LD_LIBRARY_PATH
 ENV LD_RUN_PATH=/opt/MouseAtlas/lib:$LD_RUN_PATH
 
@@ -165,8 +165,6 @@ RUN cd /tmp/ && \
 wget https://repo.anaconda.com/archive/${ANACONDAINS} && \
 bash ${ANACONDAINS} -b 
 
-RUN apt-get -y install ipython3 python3-pip python3-setuptools
-RUN python3.7 -m pip install --force-reinstall pip 
 
 #neo4j requirements
 RUN conda install --yes pynrrd
