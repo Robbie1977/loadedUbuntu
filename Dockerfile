@@ -165,18 +165,15 @@ RUN cd /tmp/ && \
 wget https://repo.anaconda.com/archive/${ANACONDAINS} && \
 bash ${ANACONDAINS} -b 
 
-#neo4j requirements
 RUN apt-get -y install ipython3 python3-pip python3-setuptools
-RUN pip3 install pynrrd
-RUN pip3 install requests
-RUN pip3 install psycopg2-binary
-RUN pip3 install pandas
+RUN python3.7 -m pip install --force-reinstall pip 
 
-RUN python3.7 -m pip install --force-reinstall pip && \
-pip install psycopg2-binary && \
-pip install requests && \
-pip install pandas && \
-pip install catpy
+#neo4j requirements
+RUN conda install --yes pynrrd
+RUN conda install --yes requests
+RUN conda install --yes psycopg2
+RUN conda install --yes pandas
+RUN conda install --yes catpy
 
 COPY /scripts/* /scripts/
 RUN chmod +x /scripts/*.sh
