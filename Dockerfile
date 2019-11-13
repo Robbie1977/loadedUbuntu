@@ -9,10 +9,10 @@ RUN apt-get -qq update && apt-get -qq -y install curl bzip2 \
     && bash /tmp/miniconda.sh -bfp /usr/local \
     && rm -rf /tmp/miniconda.sh \
     && conda install -y python=3 \
-    && conda update conda \
+    && conda update -y conda \
     && apt-get -qq -y remove curl bzip2 \
     && apt-get -qq -y autoremove \
-    && apt-get autoclean \
+    && apt-get -y autoclean \
     && rm -rf /var/lib/apt/lists/* /var/log/dpkg.log \
     && conda clean --all --yes
 
