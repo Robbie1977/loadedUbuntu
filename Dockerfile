@@ -182,11 +182,11 @@ bash ${ANACONDAINS} -b
 RUN conda install python=3.7 anaconda=custom
 
 #neo4j requirements
-RUN /opt/conda/bin/pip install pynrrd
-RUN /opt/conda/bin/pip install requests
-RUN /opt/conda/bin/pip install psycopg2
-RUN /opt/conda/bin/pip install pandas
-RUN /opt/conda/bin/pip install catpy
+RUN python3.7 -m pip install pynrrd
+RUN python3.7 -m pip install requests
+RUN python3.7 -m pip install psycopg2
+RUN python3.7 -m pip install pandas
+RUN python3.7 -m pip install catpy
 
 COPY /scripts/* /scripts/
 RUN chmod +x /scripts/*.sh
