@@ -168,6 +168,7 @@ bash ${ANACONDAINS} -b
 RUN conda install python=3.7 anaconda=custom
 
 #neo4j requirements
+RUN /root/anaconda3/bin/pip install -r /opt/VFB_neo4j/requirements.txt
 RUN /root/anaconda3/bin/pip install pynrrd
 RUN /root/anaconda3/bin/pip install requests
 RUN /root/anaconda3/bin/pip install psycopg2
