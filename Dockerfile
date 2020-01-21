@@ -173,6 +173,7 @@ RUN /root/anaconda3/bin/pip install requests
 RUN /root/anaconda3/bin/pip install psycopg2
 RUN /root/anaconda3/bin/pip install pandas
 RUN /root/anaconda3/bin/pip install catpy
+RUN /root/anaconda3/bin/pip install base36
 
 COPY /scripts/* /scripts/
 RUN chmod +x /scripts/*.sh
