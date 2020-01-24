@@ -23,7 +23,7 @@ RUN pip install neo4j
 RUN apt-get -y install build-essential gcc make wget libdirectfb-dev libjpeg-dev zlib1g-dev libsdl-gfx1.2-dev gcc libsdl1.2-dev libasound2-dev  pkg-config libpci-dev dh-autoreconf csh
 
 ENV MA=/opt/MouseAtlas
-RUN export PATH=/root/anaconda3/bin:/opt/VFB_neo4j/src:/opt/MouseAtlas/bin:$PATH
+ENV PATH=/opt/MouseAtlas/bin:$PATH
 ENV LD_LIBRARY_PATH=/opt/MouseAtlas/lib:$LD_LIBRARY_PATH
 ENV LD_RUN_PATH=/opt/MouseAtlas/lib:$LD_RUN_PATH
 
@@ -97,63 +97,9 @@ RUN cd /tmp/ \
 && make \
 && make install
 
-
-# RUN cd /opt/ \
-# && git clone https://github.com/Robbie1977/NRRDtools.git 
-# RUN cd /opt/ \
-# && git clone https://github.com/Robbie1977/SWCtools.git 
-# RUN cd /opt/ \
-# && git clone https://github.com/Robbie1977/Bound.git 
-# RUN cd /opt/ \
-# && git clone https://github.com/Robbie1977/3DwarpScoring.git 
-# RUN cd /opt/ \
-# && git clone https://github.com/Robbie1977/IndexStackConv.git 
-# RUN cd /opt/ \
-# && git clone https://github.com/Robbie1977/3DstackDisplay.git
-# RUN cd /opt/ \
-# && git clone https://github.com/Robbie1977/lsm2nrrd.git
-# RUN cd /opt/ \
-# && git clone https://github.com/Robbie1977/nrrd2raw.git
 RUN cd /opt/ \
 && git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git
-# RUN cd /opt/ \
-# && git clone https://github.com/VirtualFlyBrain/StackProcessing.git
-# RUN cd /opt/ \
-# && git clone https://github.com/VirtualFlyBrain/StackLoader.git
-# RUN cd /opt/ \
-# && wget https://downloads.imagej.net/fiji/latest/fiji-linux64.zip \
-# && unzip fiji-linux64.zip \
-# && rm fiji-linux64.zip
 
-# ENV FIJI=/opt/Fiji.app/ImageJ-linux64
-
-# RUN mkdir -p /data/ && cd /data/ \
-# && git clone https://github.com/VirtualFlyBrain/DrosAdultVNSdomains.git
-
-# RUN cd /data/ \
-# && git clone https://github.com/VirtualFlyBrain/DrosAdultBRAINdomains.git
-
-# RUN cd /data/ \
-# && git clone https://github.com/VirtualFlyBrain/DrosAdultHalfBRAINdomains.git
-
-
-
-# RUN mkdir -p /disk/data/VFB/IMAGE_DATA/
-# RUN ln -s /opt/StackLoader /disk/data/VFB/IMAGE_DATA/
-# RUN mkdir -p /partition/bocian/VFBTools
-# RUN ln -s /opt/* /partition/bocian/VFBTools/
-# RUN ln -s /VFB /disk/data/VFB/IMAGE_DATA/
-# RUN mkdir -p /disk/data/VFBTools
-# RUN ln -s /opt/Fiji.app /disk/data/VFBTools/
-# RUN mv /disk/data/VFBTools/Fiji.app /disk/data/VFBTools/Fiji
-# RUN ln -s /opt/* /disk/data/VFBTools/
-# RUN ln -s /disk/data/VFBTools/MouseAtlas /disk/data/VFBTools/Woolz2013Full
-# RUN mkdir -p /partition/karenin/VFB/IMAGE_DATA/
-# RUN ln -s /opt/StackLoader /partition/karenin/VFB/IMAGE_DATA/
-# RUN ln -s /VFB /partition/karenin/VFB/IMAGE_DATA/
-# RUN mkdir -p /partition/bocian/VFBTools/python-modules-2.6/bin/
-# RUN echo "#empty" > /partition/bocian/VFBTools/python-modules-2.6/bin/activate
-# RUN ln -s /opt/StackProcessing /disk/data/VFB/IMAGE_DATA/
 
 ENV TZAREA=Europe
 ENV TZCITY=London
@@ -166,14 +112,16 @@ wget https://repo.anaconda.com/archive/${ANACONDAINS} && \
 bash ${ANACONDAINS} -b 
 
 #neo4j requirements
-RUN /root/anaconda3/bin/pip install -r /opt/VFB_neo4j/requirements.txt
-RUN /root/anaconda3/bin/pip install pynrrd
-RUN /root/anaconda3/bin/pip install requests
-RUN /root/anaconda3/bin/pip install psycopg2
-RUN /root/anaconda3/bin/pip install pandas
-RUN /root/anaconda3/bin/pip install catpy
-RUN /root/anaconda3/bin/pip install base36
+RUN apt-get -y install ipython3 python3-pip python3-setuptools
+RUN pip install psycopg2-binary
+RUN pip install -r /opt/VFB_neo4j/requirements.txt
+RUN pip3 install psycopg2-binary
+RUN pip3 install -r /opt/VFB_neo4j/requirements.txt
+
 RUN cd /opt && git clone https://github.com/VirtualFlyBrain/curation.git
+
+RUN python3.7 -m pip install --force-reinstall pip 
+RUN python3.7 -m pip install install psycopg2-binary 
 RUN python3.7 -m pip install -r /opt/curation/requirements.txt 
 RUN python3.7 -m pip install -r /opt/VFB_neo4j/requirements.txt
 
