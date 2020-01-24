@@ -113,17 +113,18 @@ bash ${ANACONDAINS} -b
 
 #neo4j requirements
 RUN apt-get -y install ipython3 python3-pip python3-setuptools
-RUN pip install psycopg2-binary
-RUN pip install -r /opt/VFB_neo4j/requirements.txt
-RUN pip3 install psycopg2-binary
-RUN pip3 install -r /opt/VFB_neo4j/requirements.txt
 
 RUN cd /opt && git clone https://github.com/VirtualFlyBrain/curation.git
 
+RUN sed 's/^psycopg2/psycopg2-binary/g' /opt/VFB_neo4j/requirements.txt >> /opt/requirements.txt
+RUN sed 's/^psycopg2/psycopg2-binary/g' /opt/curation/requirements.txt >> /opt/requirements.txt
+
+RUN pip install -r /opt/requirements.txt
+RUN pip3 install -r /opt/requirements.txt
+
 RUN python3.7 -m pip install --force-reinstall pip 
-RUN python3.7 -m pip install install psycopg2-binary 
-RUN python3.7 -m pip install -r /opt/curation/requirements.txt 
-RUN python3.7 -m pip install -r /opt/VFB_neo4j/requirements.txt
+
+RUN python3.7 -m pip install -r /opt/requirements.txt 
 
 COPY /scripts/* /scripts/
 RUN chmod +x /scripts/*.sh
