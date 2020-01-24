@@ -175,6 +175,9 @@ RUN /root/anaconda3/bin/pip install psycopg2
 RUN /root/anaconda3/bin/pip install pandas
 RUN /root/anaconda3/bin/pip install catpy
 RUN /root/anaconda3/bin/pip install base36
+RUN cd /opt && git clone https://github.com/VirtualFlyBrain/curation.git
+RUN python3.7 -m pip install -r /opt/curation/requirements.txt 
+RUN python3.7 -m pip install -r /opt/VFB_neo4j/requirements.txt
 
 COPY /scripts/* /scripts/
 RUN chmod +x /scripts/*.sh
