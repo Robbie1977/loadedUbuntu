@@ -116,8 +116,8 @@ RUN apt-get -y install ipython3 python3-pip python3-setuptools
 
 RUN cd /opt && git clone https://github.com/VirtualFlyBrain/curation.git
 
-RUN sed 's/^psycopg2/psycopg2-binary/g' /opt/VFB_neo4j/requirements.txt >> /opt/requirements.txt
-RUN sed 's/^psycopg2/psycopg2-binary/g' /opt/curation/requirements.txt >> /opt/requirements.txt
+RUN sed 's/^psycopg2$/psycopg2-binary/g' /opt/VFB_neo4j/requirements.txt >> /opt/requirements.txt
+RUN sed 's/^psycopg2$/psycopg2-binary/g' /opt/curation/requirements.txt >> /opt/requirements.txt
 
 RUN pip install -r /opt/requirements.txt
 RUN pip3 install -r /opt/requirements.txt
