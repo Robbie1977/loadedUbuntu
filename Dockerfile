@@ -155,7 +155,11 @@ RUN mkdir -p /partition/bocian/VFBTools/python-modules-2.6/bin/
 RUN echo "#empty" > /partition/bocian/VFBTools/python-modules-2.6/bin/activate
 RUN ln -s /opt/StackProcessing /disk/data/VFB/IMAGE_DATA/
 
-RUN pip install jgo
+RUN cd /opt/ && \
+git clone https://github.com/scijava/jgo && \
+cd /bin && \
+ln -s /opt/jgo/jgo.sh jgo && \
+jgo --help
 RUN cd /opt/ && \
 git clone https://github.com/saalfeldlab/template-building.git && \
 cd template-building && \
