@@ -163,7 +163,7 @@ RUN cd /opt/ && \
 git clone https://github.com/saalfeldlab/template-building.git && \
 cd template-building && \
 git checkout v0.1.1 && \
-mvn clean compile install
+mvn -Dimagej.app.directory=$FIJI clean compile install
 
 COPY /scripts/* /scripts/
 RUN chmod +x /scripts/*.sh
