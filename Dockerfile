@@ -168,6 +168,12 @@ mvn -Dimagej.app.directory=$FIJI clean compile install
 COPY /scripts/* /scripts/
 RUN chmod +x /scripts/*.sh
 
+ENV woolzDir=/usr/lib/cmtk/bin/
+ENV dirName=/opt/StackLoader/PutAlignedFilesInHere/
+ENV fijiBin=/opt/Fiji.app/ImageJ-linux64
+ENV sriptDir=/opt/StackProcessing/scripts/
+ENV imageDir=/IMAGE_DATA/VFB/i/
+
 ENTRYPOINT /scripts/startup.sh
 
 EXPOSE 80
