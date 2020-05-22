@@ -165,7 +165,7 @@ ln -s /opt/jgo/jgo.sh jgo
 RUN cd /opt/ && \
 git clone https://github.com/saalfeldlab/template-building.git && \
 cd template-building && \
-git checkout v0.1.1 && \
+git checkout v0.1.0 && \
 mvn -Dimagej.app.directory=$FIJI clean compile install
 
 COPY /scripts/* /scripts/
