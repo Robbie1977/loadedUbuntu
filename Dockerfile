@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:bionic
 
 VOLUME input
 VOLUME output
@@ -6,9 +6,6 @@ VOLUME template
 
 #cmtk
 RUN apt-get -qq -y update \ 
-&& apt-get -qq -y install software-properties-common \ 
-&& apt-add-repository universe \ 
-&& apt-get -qq -y update \ 
 && apt-get -qq -y install locales cmtk python python-pip python-dev ipython build-essential git nano autoconf nasm zip automake autoconf m4 libtool bison cmake flex xvfb imagej bc sec libpq-dev maven \
 && pip install --upgrade virtualenv \
 && pip install --upgrade pip
