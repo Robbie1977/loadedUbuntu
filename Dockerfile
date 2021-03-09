@@ -174,6 +174,16 @@ ENV fijiBin=/opt/Fiji.app/ImageJ-linux64
 ENV sriptDir=/opt/StackProcessing/scripts/
 ENV imageDir=/IMAGE_DATA/VFB/i/
 
+RUN cd /opt/ && \
+wget https://www.imagemagick.org/download/ImageMagick.tar.gz && \
+tar xvzf ImageMagick.tar.gz && \
+cd ImageMagick-* && \
+./configure && \
+make && \
+make install && \ 
+ldconfig /usr/local/lib && \
+magick -version
+
 ENTRYPOINT /scripts/startup.sh
 
 EXPOSE 80
