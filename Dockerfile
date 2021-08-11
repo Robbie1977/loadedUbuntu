@@ -16,7 +16,7 @@ RUN pip install h5py
 
 
 #woolz
-RUN apt-get -y install build-essential gcc make wget libdirectfb-dev libjpeg-dev zlib1g-dev libsdl-gfx1.2-dev gcc libsdl1.2-dev libasound2-dev  pkg-config libpci-dev dh-autoreconf csh
+RUN apt-get -y install build-essential gcc make wget libdirectfb-dev libjpeg-dev zlib1g-dev libsdl-gfx1.2-dev gcc libsdl1.2-dev libasound2-dev  pkg-config libpci-dev dh-autoreconf csh python-cjson
 
 ENV MA=/opt/MouseAtlas
 ENV PATH=/opt/MouseAtlas/bin:$PATH
