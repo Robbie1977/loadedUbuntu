@@ -10,14 +10,7 @@ RUN apt-get -qq -y update \
 && pip install --upgrade virtualenv \
 && pip install --upgrade pip
 
-#python image support
-RUN pip3 install pynrrd
-RUN pip3 install h5py
 
-#python neo4j support
-RUN pip3 install requests
-RUN pip3 install psycopg2
-RUN pip3 install neo4j
 
 #woolz
 RUN apt-get -y install build-essential gcc make wget libdirectfb-dev libjpeg-dev zlib1g-dev libsdl-gfx1.2-dev gcc libsdl1.2-dev libasound2-dev  pkg-config libpci-dev dh-autoreconf csh
@@ -113,6 +106,15 @@ bash ${ANACONDAINS} -b
 
 #neo4j requirements
 RUN apt-get -y install ipython3 python3-pip python3-setuptools
+
+#python image support
+RUN pip3 install pynrrd
+RUN pip3 install h5py
+
+#python neo4j support
+RUN pip3 install requests
+RUN pip3 install psycopg2
+RUN pip3 install neo4j
 
 RUN cd /opt && git clone https://github.com/VirtualFlyBrain/curation.git
 
