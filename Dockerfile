@@ -126,6 +126,10 @@ RUN python3.7 -m pip install --force-reinstall pip
 
 RUN python3.7 -m pip install -r /opt/requirements.txt 
 
+RUN python3.7 -m pip install ipykernel
+
+RUN python3.7 -m ipykernel install --prefix=/root/anaconda3/envs/ --name 'python3.7'
+
 COPY /scripts/* /scripts/
 RUN chmod +x /scripts/*.sh
 
