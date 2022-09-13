@@ -87,6 +87,7 @@ RUN cd /tmp/External/ \
 RUN cd /tmp/ \
 && git clone https://github.com/ma-tech/Woolz.git \
 && cd Woolz \
+&& cp -v readme.md README
 && mkdir -p m4 \
 && libtoolize \
 && aclocal \
