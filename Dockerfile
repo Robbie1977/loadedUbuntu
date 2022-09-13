@@ -175,7 +175,7 @@ ENV sriptDir=/opt/StackProcessing/scripts/
 ENV imageDir=/IMAGE_DATA/VFB/i/
 
 RUN cd /opt/ && \
-wget https://www.imagemagick.org/download/ImageMagick.tar.gz && \
+wget https://www.imagemagick.org/archive/ImageMagick.tar.gz && \
 tar xvzf ImageMagick.tar.gz && \
 cd ImageMagick-* && \
 ./configure && \
