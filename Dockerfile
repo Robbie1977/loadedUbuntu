@@ -80,6 +80,16 @@ RUN cd /tmp/External/ \
 && make \
 && make install
 
+# Install cJSON library
+RUN cd /tmp/ \
+    && git clone https://github.com/DaveGamble/cJSON.git \
+    && cd cJSON \
+    && mkdir build \
+    && cd build \
+    && cmake .. \
+    && make \
+    && make install
+
 RUN cd /tmp/ \
 && git clone https://github.com/ma-tech/Woolz.git \
 && cd Woolz \
