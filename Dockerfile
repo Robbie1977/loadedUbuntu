@@ -6,13 +6,15 @@ VOLUME template
 
 #cmtk
 RUN apt-get -qq -y update \ 
-&& apt-get -qq -y install locales cmtk python python-pip python-dev ipython build-essential git nano autoconf nasm zip automake autoconf m4 libtool bison cmake flex xvfb imagej bc sec libpq-dev maven \
+&& apt-get -qq -y install locales cmtk python python-pip python-dev ipython build-essential git nano autoconf nasm zip automake autoconf m4 libtool bison cmake flex xvfb imagej bc sec libpq-dev maven python3 pip3 \
 && pip install --upgrade virtualenv \
 && pip install --upgrade pip
 
 #python image support
 RUN pip install pynrrd
 RUN pip install h5py
+
+RUN pip3 install pynrrd h5py requests psycopg2 neo4j==1.7.6
 
 #python neo4j support
 RUN pip install requests
