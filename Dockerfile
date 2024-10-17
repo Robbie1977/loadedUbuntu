@@ -81,7 +81,7 @@ RUN cd /tmp/External/ \
 && rm -rf tiff-4.0.8 \
 && tar -zxf tiff-4.0.8.tar.gz \
 && cd tiff-4.0.8 \
-&& ./configure --prefix=$MA --disable-shared --enable-static --with-pic --with-jpeg-include-dir=$MA/include --with-jpeg-lib-dir==$MA/lib \
+&& ./configure --prefix=$MA --disable-shared --enable-static --with-pic --with-jpeg-include-dir=$MA/include --with-jpeg-lib-dir=$MA/lib \
 && make \
 && make install
 
@@ -90,6 +90,16 @@ RUN cd /tmp/External/ \
 && cd NIfTI \
 && tar -zxf nifticlib-2.0.0.tar.gz \
 && cmake nifticlib-2.0.0 \
+&& make \
+&& make install
+
+# Install cJSON
+RUN cd /tmp/ \
+&& git clone https://github.com/DaveGamble/cJSON.git \
+&& cd cJSON \
+&& mkdir build \
+&& cd build \
+&& cmake .. \
 && make \
 && make install
 
@@ -104,34 +114,23 @@ RUN cd /tmp/ \
 && automake --add-missing \
 && autoreconf -i --force \
 && ./build.sh \
-&& ./configure --prefix=$MA --enable-optimise --enable-extff --with-jpeg=$MA --with-tiff=$MA --with-nifti=/usr/local/ \
+&& ./configure --prefix=$MA --enable-optimise --enable-extff --with-jpeg=$MA --with-tiff=$MA --with-nifti=/usr/local/ CPPFLAGS="-I/usr/local/include/cjson" LDFLAGS="-L/usr/local/lib" \
 && make \
 && make install
 
 # Additional tools installation
 RUN cd /opt/ \
-&& git clone https://github.com/Robbie1977/NRRDtools.git 
-RUN cd /opt/ \
-&& git clone https://github.com/Robbie1977/SWCtools.git 
-RUN cd /opt/ \
-&& git clone https://github.com/Robbie1977/Bound.git 
-RUN cd /opt/ \
-&& git clone https://github.com/Robbie1977/3DwarpScoring.git 
-RUN cd /opt/ \
-&& git clone https://github.com/Robbie1977/IndexStackConv.git 
-RUN cd /opt/ \
-&& git clone https://github.com/Robbie1977/3DstackDisplay.git
-RUN cd /opt/ \
-&& git clone https://github.com/Robbie1977/lsm2nrrd.git
-RUN cd /opt/ \
-&& git clone https://github.com/Robbie1977/nrrd2raw.git
-RUN cd /opt/ \
-&& git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git
-RUN cd /opt/ \
-&& git clone https://github.com/VirtualFlyBrain/StackProcessing.git
-RUN cd /opt/ \
-&& git clone https://github.com/VirtualFlyBrain/StackLoader.git
-RUN cd /opt/ \
+&& git clone https://github.com/Robbie1977/NRRDtools.git \
+&& git clone https://github.com/Robbie1977/SWCtools.git \
+&& git clone https://github.com/Robbie1977/Bound.git \
+&& git clone https://github.com/Robbie1977/3DwarpScoring.git \
+&& git clone https://github.com/Robbie1977/IndexStackConv.git \
+&& git clone https://github.com/Robbie1977/3DstackDisplay.git \
+&& git clone https://github.com/Robbie1977/lsm2nrrd.git \
+&& git clone https://github.com/Robbie1977/nrrd2raw.git \
+&& git clone https://github.com/VirtualFlyBrain/VFB_neo4j.git \
+&& git clone https://github.com/VirtualFlyBrain/StackProcessing.git \
+&& git clone https://github.com/VirtualFlyBrain/StackLoader.git \
 && wget https://downloads.imagej.net/fiji/latest/fiji-linux64.zip \
 && unzip fiji-linux64.zip \
 && rm fiji-linux64.zip
@@ -139,29 +138,27 @@ RUN cd /opt/ \
 ENV FIJI=/opt/Fiji.app/ImageJ-linux64
 
 RUN mkdir -p /data/ && cd /data/ \
-&& git clone https://github.com/VirtualFlyBrain/DrosAdultVNSdomains.git
-RUN cd /data/ \
-&& git clone https://github.com/VirtualFlyBrain/DrosAdultBRAINdomains.git
-RUN cd /data/ \
+&& git clone https://github.com/VirtualFlyBrain/DrosAdultVNSdomains.git \
+&& git clone https://github.com/VirtualFlyBrain/DrosAdultBRAINdomains.git \
 && git clone https://github.com/VirtualFlyBrain/DrosAdultHalfBRAINdomains.git
 
 # Various symlinks
-RUN mkdir -p /disk/data/VFB/IMAGE_DATA/
-RUN ln -s /opt/StackLoader /disk/data/VFB/IMAGE_DATA/
-RUN mkdir -p /partition/bocian/VFBTools
-RUN ln -s /opt/* /partition/bocian/VFBTools/
-RUN ln -s /VFB /disk/data/VFB/IMAGE_DATA/
-RUN mkdir -p /disk/data/VFBTools
-RUN ln -s /opt/Fiji.app /disk/data/VFBTools/
-RUN mv /disk/data/VFBTools/Fiji.app /disk/data/VFBTools/Fiji
-RUN ln -s /opt/* /disk/data/VFBTools/
-RUN ln -s /disk/data/VFBTools/MouseAtlas /disk/data/VFBTools/Woolz2013Full
-RUN mkdir -p /partition/karenin/VFB/IMAGE_DATA/
-RUN ln -s /opt/StackLoader /partition/karenin/VFB/IMAGE_DATA/
-RUN ln -s /VFB /partition/karenin/VFB/IMAGE_DATA/
-RUN mkdir -p /partition/bocian/VFBTools/python-modules-2.6/bin/
-RUN echo "#empty" > /partition/bocian/VFBTools/python-modules-2.6/bin/activate
-RUN ln -s /opt/StackProcessing /disk/data/VFB/IMAGE_DATA/
+RUN mkdir -p /disk/data/VFB/IMAGE_DATA/ \
+&& ln -s /opt/StackLoader /disk/data/VFB/IMAGE_DATA/ \
+&& mkdir -p /partition/bocian/VFBTools \
+&& ln -s /opt/* /partition/bocian/VFBTools/ \
+&& ln -s /VFB /disk/data/VFB/IMAGE_DATA/ \
+&& mkdir -p /disk/data/VFBTools \
+&& ln -s /opt/Fiji.app /disk/data/VFBTools/ \
+&& mv /disk/data/VFBTools/Fiji.app /disk/data/VFBTools/Fiji \
+&& ln -s /opt/* /disk/data/VFBTools/ \
+&& ln -s /disk/data/VFBTools/MouseAtlas /disk/data/VFBTools/Woolz2013Full \
+&& mkdir -p /partition/karenin/VFB/IMAGE_DATA/ \
+&& ln -s /opt/StackLoader /partition/karenin/VFB/IMAGE_DATA/ \
+&& ln -s /VFB /partition/karenin/VFB/IMAGE_DATA/ \
+&& mkdir -p /partition/bocian/VFBTools/python-modules-2.6/bin/ \
+&& echo "#empty" > /partition/bocian/VFBTools/python-modules-2.6/bin/activate \
+&& ln -s /opt/StackProcessing /disk/data/VFB/IMAGE_DATA/
 
 # Install JGO and other tools
 RUN cd /opt/ && \
