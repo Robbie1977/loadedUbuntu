@@ -6,7 +6,7 @@ VOLUME template
 
 # Base dependencies
 RUN apt-get -qq -y update \ 
-&& apt-get -qq -y install locales cmtk python python-pip python-dev ipython build-essential git nano autoconf nasm zip automake autoconf m4 libtool bison cmake flex xvfb imagej bc sec libpq-dev maven python3 python3-pip \
+&& apt-get -qq -y install locales cmtk python python-pip python-dev ipython build-essential git nano autoconf nasm zip automake autoconf m4 libtool bison cmake flex xvfb imagej bc sec libpq-dev maven python3 python3-pip libcjson-dev \
 && pip install --upgrade virtualenv \
 && pip install --upgrade pip
 
@@ -23,16 +23,6 @@ RUN pip install neo4j==1.7.6
 
 # Woolz dependencies
 RUN apt-get -y install build-essential gcc make wget libdirectfb-dev libjpeg-dev zlib1g-dev libsdl-gfx1.2-dev gcc libsdl1.2-dev libasound2-dev pkg-config libpci-dev dh-autoreconf csh
-
-# Install cJSON
-RUN cd /tmp/ \
-&& git clone https://github.com/DaveGamble/cJSON.git \
-&& cd cJSON \
-&& mkdir build \
-&& cd build \
-&& cmake .. \
-&& make \
-&& make install
 
 ENV MA=/opt/MouseAtlas
 ENV PATH=/opt/MouseAtlas/bin:$PATH
