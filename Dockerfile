@@ -14,7 +14,7 @@ RUN apt-get -qq -y update \
 RUN pip install pynrrd
 RUN pip install h5py
 
-RUN pip3 install pynrrd h5py requests psycopg2 neo4j==1.7.6
+RUN pip3 install pynrrd h5py requests psycopg2 neo4j==1.7.6 tifffile
 
 # Python neo4j support
 RUN pip install requests
